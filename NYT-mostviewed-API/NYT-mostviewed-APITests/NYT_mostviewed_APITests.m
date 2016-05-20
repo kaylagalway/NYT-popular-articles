@@ -1,6 +1,6 @@
 //
-//  nyt_articles_apiTests.m
-//  nyt-articles-apiTests
+//  NYT_mostviewed_APITests.m
+//  NYT-mostviewed-APITests
 //
 //  Created by Kayla Galway on 5/19/16.
 //  Copyright © 2016 edu.self. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface nyt_articles_apiTests : XCTestCase
+@interface NYT_mostviewed_APITests : XCTestCase
 
 @end
 
-@implementation nyt_articles_apiTests
+@implementation NYT_mostviewed_APITests
 
 - (void)setUp {
     [super setUp];
