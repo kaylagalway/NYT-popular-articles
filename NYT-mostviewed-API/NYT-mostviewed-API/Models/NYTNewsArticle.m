@@ -8,35 +8,37 @@
 
 #import "NYTNewsArticle.h"
 
-typedef NS_ENUM(NSUInteger, ImageType) {
-    Square320,
-    StandardThumbnail,
-    Normal,
-    Large,
-    Jumbo,
-    SuperJumbo,
-    Square640,
-    LargeThumbnail,
-    MediumThreeByTwo210,
-    MediumThreeByTwo440
-};
-
 NSString *const NYTNewsArticleConstants_dictionaryKey_title = @"abstract";
 NSString *const NYTNewsArticleConstants_dictionaryKey_publishDate = @"published_date";
 NSString *const NYTNewsArticleConstants_dictionaryKey_media = @"media";
 NSString *const NYTNewsArticleConstants_dictionaryKey_caption = @"caption";
-NSString *const NYTNewsArticleConstants_dictionaryKey_mediaMetaData = @"media-metadata";
+NSString *const NYTNewsArticleConstants_dictionaryKey_mediaMetadata = @"media-metadata";
+NSString *const NYTNewsArticleConstants_dictionaryKey_mediaFormat = @"format";
 NSString *const NYTNewsArticleConstants_dictionaryKey_articleURLString = @"url";
 NSString *const NYTNewsArticleConstants_dictionaryKey_imageURL = @"url";
 NSString *const NYTNewsArticleConstants_dictionaryKey_assetID = @"asset_id";
 
-@interface NYTNewsArticle ()
+//Image format keys
+NSString *const NYTNewsArticleConstants_imageFormat_standardThumbnail = @"Standard Thumbnail";
+NSString *const NYTNewsArticleConstants_imageFormat_largeThumbnail = @"Large Thumbnail";
+NSString *const NYTNewsArticleConstants_imageFormat_mediumThreeByTwo210 = @"mediumThreeByTwo210";
+NSString *const NYTNewsArticleConstants_imageFormat_normal = @"Normal";
+NSString *const NYTNewsArticleConstants_imageFormat_square320 = @"square320";
+NSString *const NYTNewsArticleConstants_imageFormat_large = @"Large";
+NSString *const NYTNewsArticleConstants_imageFormat_mediumThreeByTwo440 = @"mediumThreeByTwo440";
+NSString *const NYTNewsArticleConstants_imageFormat_square640 = @"square640";
+NSString *const NYTNewsArticleConstants_imageFormat_jumbo = @"Jumbo";
+NSString *const NYTNewsArticleConstants_imageFormat_superJumbo = @"superJumbo";
+
+@interface NYTNewsArticle () <NSCoding>
+
 @property (strong, nonatomic, readwrite) NSString *title;
 @property (strong, nonatomic, readwrite) NSString *publishedDate;
 @property (strong, nonatomic, readwrite) NSURL *thumbnailURL;
-@property (strong, nonatomic, readwrite) NSURL *largeImageURL;
+@property (strong, nonatomic, readwrite) NSMutableDictionary *availableImages;
 @property (strong, nonatomic, readwrite) NSURL *articleURL;
 @property (strong, nonatomic, readwrite) NSString *assetID;
+
 @end
 
 @implementation NYTNewsArticle
@@ -46,12 +48,72 @@ NSString *const NYTNewsArticleConstants_dictionaryKey_assetID = @"asset_id";
     if (self) {
         _title = dictionary[NYTNewsArticleConstants_dictionaryKey_title];
         _publishedDate = dictionary[NYTNewsArticleConstants_dictionaryKey_publishDate];
-        _articleURL = [NSURL URLWithString: [dictionary[NYTNewsArticleConstants_dictionaryKey_articleURLString]stringValue]];
+        _articleURL = [NSURL URLWithString: dictionary[NYTNewsArticleConstants_dictionaryKey_articleURLString]];
         _assetID = dictionary[NYTNewsArticleConstants_dictionaryKey_assetID];
+        _availableImages = [@{}mutableCopy];
         
-        NSArray *mediaDictArray = dictionary[NYTNewsArticleConstants_dictionaryKey_media][NYTNewsArticleConstants_dictionaryKey_mediaMetaData];
-        _thumbnailURL = [NSURL URLWithString: [mediaDictArray[StandardThumbnail][NYTNewsArticleConstants_dictionaryKey_imageURL] stringValue]];
-        _largeImageURL = [NSURL URLWithString: [mediaDictArray[Large][NYTNewsArticleConstants_dictionaryKey_imageURL]stringValue]];
+        NSArray *mediaDictionaries = dictionary[NYTNewsArticleConstants_dictionaryKey_media][0][NYTNewsArticleConstants_dictionaryKey_mediaMetadata];
+        for (NSDictionary *metadataDictionary in mediaDictionaries) {
+            [self mapMediaMetadata:metadataDictionary];
+        }
+    }
+    return self;
+}
+
+-(void)mapMediaMetadata:(NSDictionary *)metaDataDict {
+    NSString *imageFormat = metaDataDict[NYTNewsArticleConstants_dictionaryKey_mediaFormat];
+    NSURL *imageURL = [NSURL URLWithString: metaDataDict[NYTNewsArticleConstants_dictionaryKey_imageURL]];
+    _availableImages[imageFormat] = imageURL;
+}
+
+-(NSURL *)largestAvailableImageURL {
+    if (self.availableImages[NYTNewsArticleConstants_imageFormat_superJumbo]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_superJumbo];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_jumbo]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_jumbo];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_square640]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_square640];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_mediumThreeByTwo440]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_mediumThreeByTwo440];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_large]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_large];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_square320]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_square320];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_normal]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_normal];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_mediumThreeByTwo210]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_mediumThreeByTwo210];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_largeThumbnail]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_largeThumbnail];
+    } else if (self.availableImages[NYTNewsArticleConstants_imageFormat_standardThumbnail]) {
+        return self.availableImages[NYTNewsArticleConstants_imageFormat_standardThumbnail];
+    } else {
+        return nil;
+    }
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.publishedDate forKey:@"publishedDate"];
+    [aCoder encodeObject:self.standardThumbnailURL forKey:@"standardThumbnailURL"];
+    [aCoder encodeObject:self.availableImages forKey:@"availableImages"];
+    [aCoder encodeObject:self.articleURL forKey:@"articleURL"];
+    [aCoder encodeObject:self.assetID forKey:@"assetID"];
+    [aCoder encodeObject:self.thumbnailImage forKey:@"thumbnailImage"];
+    [aCoder encodeObject:self.largeImage forKey:@"largeImage"];
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        _title = [aDecoder decodeObjectForKey:@"title"];
+        _publishedDate = [aDecoder decodeObjectForKey:@"publishedDate"];
+        _standardThumbnailURL = [aDecoder decodeObjectForKey:@"standardThumbnailURL"];
+        _availableImages = [aDecoder decodeObjectForKey:@"availableImages"];
+        _articleURL = [aDecoder decodeObjectForKey:@"articleURL"];
+        _assetID = [aDecoder decodeObjectForKey:@"assetID"];
+        _thumbnailURL = [aDecoder decodeObjectForKey:@"thumbnailImage"];
+        _largeImage = [aDecoder decodeObjectForKey:@"largeImage"];
     }
     return self;
 }

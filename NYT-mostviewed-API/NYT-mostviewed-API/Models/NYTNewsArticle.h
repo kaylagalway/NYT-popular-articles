@@ -7,16 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NYTNewsArticle : NSObject
 
 @property (strong, nonatomic, readonly) NSString *title;
 @property (strong, nonatomic, readonly) NSString *publishedDate;
-@property (strong, nonatomic, readonly) NSURL *thumbnailURL;
-@property (strong, nonatomic, readonly) NSURL *largeImageURL;
+@property (strong, nonatomic, readonly) NSURL *standardThumbnailURL;
+@property (strong, nonatomic, readonly) NSMutableDictionary *availableImages;
 @property (strong, nonatomic, readonly) NSURL *articleURL;
 @property (strong, nonatomic, readonly) NSString *assetID;
 
+@property (strong, nonatomic) UIImage *thumbnailImage;
+@property (strong, nonatomic) UIImage *largeImage;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (NSURL *)largestAvailableImageURL;
+
 
 @end

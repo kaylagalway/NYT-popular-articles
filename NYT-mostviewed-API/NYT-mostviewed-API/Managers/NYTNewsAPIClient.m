@@ -8,14 +8,6 @@
 
 #import "NYTNewsAPIClient.h"
 
-typedef NS_ENUM(NSUInteger, NewsCategory) {
-    Art,
-    Sports,
-    Politics,
-    US,
-    World
-};
-
 //URL–Path Components
 NSString *const NYTNewsAPIClientConstants_urlComponent_baseUrl = @"api.nytimes.com";
 NSString *const NYTNewsAPIClientConstants_urlComponent_apiService = @"svc";
@@ -39,46 +31,9 @@ NSString *const NYTNewsAPIClientConstants_urlParameter_apiKey = @"api-key";
 //Parameter Values
 NSString *const NYTNewsAPIClientConstants_urlParameterValue_apiKey = @"896558ac243a867968c80e069833ad69:4:73884796";
 
-//JSON Response Keys
-NSString *const NYTNewsAPIClientConstants_JSONResponseKey_results = @"results";
-
-
-
 //NSString *const NYTNewsAPIClientConstants_offset = @"&offset=200";
 
 @implementation NYTNewsAPIClient
-
-#pragma mark: API Category Helper Methods
-
-+ (void)fetchPoliticsJSONWithCompletion: (void(^)(NSDictionary *politicsJSON, NSError *error))completion{
-    [NYTNewsAPIClient fetchJSONForCategory:Politics withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-        completion(storiesDict, error);
-    }];
-}
-
-+ (void)fetchArtJSONWithCompletion: (void(^)(NSDictionary *artJSON, NSError *error))completion{
-    [NYTNewsAPIClient fetchJSONForCategory:Art withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-        completion(storiesDict, error);
-    }];
-}
-
-+ (void)fetchSportsJSONWithCompletion: (void(^)(NSDictionary *sportsJSON, NSError *error))completion{
-    [NYTNewsAPIClient fetchJSONForCategory:Sports withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-        completion(storiesDict, error);
-    }];
-}
-
-+ (void)fetchUSJSONWithCompletion: (void(^)(NSDictionary *usJSON, NSError *error))completion{
-    [NYTNewsAPIClient fetchJSONForCategory:US withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-        completion(storiesDict, error);
-    }];
-}
-
-+ (void)fetchWorldJSONWithCompletion: (void(^)(NSDictionary *worldJSON, NSError *error))completion{
-    [NYTNewsAPIClient fetchJSONForCategory:World withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-        completion(storiesDict, error);
-    }];
-}
 
 #pragma mark: Factories
 +(NSURL *)urlForCategory:(NewsCategory) category{

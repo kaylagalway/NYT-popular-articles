@@ -15,11 +15,13 @@
 		CD6D1F2E1CEE363D00F58CE7 /* NYT_mostviewed_APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F2D1CEE363D00F58CE7 /* NYT_mostviewed_APITests.m */; };
 		CD6D1F391CEE363D00F58CE7 /* NYT_mostviewed_APIUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F381CEE363D00F58CE7 /* NYT_mostviewed_APIUITests.m */; };
 		CD6D1F521CEE489000F58CE7 /* NYTNewsArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F511CEE489000F58CE7 /* NYTNewsArticle.m */; };
-		CD6D1F551CEE48BA00F58CE7 /* NYTNewsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F541CEE48BA00F58CE7 /* NYTNewsAPIClient.m */; };
 		CD6D1F581CEE48D400F58CE7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F571CEE48D400F58CE7 /* ViewController.m */; };
 		CD6D1F5B1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F5A1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m */; };
 		CD6D1F5F1CEE55E900F58CE7 /* HomePageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F5E1CEE55E900F58CE7 /* HomePageTableView.m */; };
-		CD6D1F631CEE89A900F58CE7 /* NYTCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F621CEE89A900F58CE7 /* NYTCacheManager.m */; };
+		CD6D1F671CEFB0CC00F58CE7 /* NYTNewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F661CEFB0CC00F58CE7 /* NYTNewsFeed.m */; };
+		CD6D1F791CEFFB9000F58CE7 /* NYTCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F741CEFFB9000F58CE7 /* NYTCacheManager.m */; };
+		CD6D1F7A1CEFFB9000F58CE7 /* NYTContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F761CEFFB9000F58CE7 /* NYTContentManager.m */; };
+		CD6D1F7B1CEFFB9000F58CE7 /* NYTNewsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F781CEFFB9000F58CE7 /* NYTNewsAPIClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,16 +58,20 @@
 		CD6D1F3A1CEE363D00F58CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6D1F501CEE488F00F58CE7 /* NYTNewsArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsArticle.h; path = Models/NYTNewsArticle.h; sourceTree = "<group>"; };
 		CD6D1F511CEE489000F58CE7 /* NYTNewsArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsArticle.m; path = Models/NYTNewsArticle.m; sourceTree = "<group>"; };
-		CD6D1F531CEE48BA00F58CE7 /* NYTNewsAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsAPIClient.h; path = APIClients/NYTNewsAPIClient.h; sourceTree = "<group>"; };
-		CD6D1F541CEE48BA00F58CE7 /* NYTNewsAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsAPIClient.m; path = APIClients/NYTNewsAPIClient.m; sourceTree = "<group>"; };
 		CD6D1F561CEE48D400F58CE7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
 		CD6D1F571CEE48D400F58CE7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
 		CD6D1F591CEE51D000F58CE7 /* NYTNewsTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsTableViewDataSource.h; path = DataSources/NYTNewsTableViewDataSource.h; sourceTree = "<group>"; };
 		CD6D1F5A1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsTableViewDataSource.m; path = DataSources/NYTNewsTableViewDataSource.m; sourceTree = "<group>"; };
 		CD6D1F5D1CEE55E900F58CE7 /* HomePageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageTableView.h; path = Views/HomePageTableView.h; sourceTree = "<group>"; };
 		CD6D1F5E1CEE55E900F58CE7 /* HomePageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageTableView.m; path = Views/HomePageTableView.m; sourceTree = "<group>"; };
-		CD6D1F611CEE89A900F58CE7 /* NYTCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTCacheManager.h; path = CacheClient/NYTCacheManager.h; sourceTree = "<group>"; };
-		CD6D1F621CEE89A900F58CE7 /* NYTCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTCacheManager.m; path = CacheClient/NYTCacheManager.m; sourceTree = "<group>"; };
+		CD6D1F651CEFB0CC00F58CE7 /* NYTNewsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsFeed.h; path = Models/NYTNewsFeed.h; sourceTree = "<group>"; };
+		CD6D1F661CEFB0CC00F58CE7 /* NYTNewsFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsFeed.m; path = Models/NYTNewsFeed.m; sourceTree = "<group>"; };
+		CD6D1F731CEFFB9000F58CE7 /* NYTCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTCacheManager.h; path = Managers/NYTCacheManager.h; sourceTree = "<group>"; };
+		CD6D1F741CEFFB9000F58CE7 /* NYTCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTCacheManager.m; path = Managers/NYTCacheManager.m; sourceTree = "<group>"; };
+		CD6D1F751CEFFB9000F58CE7 /* NYTContentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTContentManager.h; path = Managers/NYTContentManager.h; sourceTree = "<group>"; };
+		CD6D1F761CEFFB9000F58CE7 /* NYTContentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTContentManager.m; path = Managers/NYTContentManager.m; sourceTree = "<group>"; };
+		CD6D1F771CEFFB9000F58CE7 /* NYTNewsAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsAPIClient.h; path = Managers/NYTNewsAPIClient.h; sourceTree = "<group>"; };
+		CD6D1F781CEFFB9000F58CE7 /* NYTNewsAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsAPIClient.m; path = Managers/NYTNewsAPIClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				CD6D1F4C1CEE482400F58CE7 /* Models */,
-				CD6D1F641CEE89AE00F58CE7 /* CacheClient */,
-				CD6D1F491CEE370600F58CE7 /* APIClients */,
+				CD6D1F691CEFFACC00F58CE7 /* Managers */,
 				CD6D1F4B1CEE371800F58CE7 /* DataSources */,
 				CD6D1F4A1CEE371000F58CE7 /* ViewControllers */,
 				CD6D1F601CEE55F200F58CE7 /* Views */,
@@ -159,15 +164,6 @@
 			path = "NYT-mostviewed-APIUITests";
 			sourceTree = "<group>";
 		};
-		CD6D1F491CEE370600F58CE7 /* APIClients */ = {
-			isa = PBXGroup;
-			children = (
-				CD6D1F531CEE48BA00F58CE7 /* NYTNewsAPIClient.h */,
-				CD6D1F541CEE48BA00F58CE7 /* NYTNewsAPIClient.m */,
-			);
-			name = APIClients;
-			sourceTree = "<group>";
-		};
 		CD6D1F4A1CEE371000F58CE7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +187,8 @@
 			children = (
 				CD6D1F501CEE488F00F58CE7 /* NYTNewsArticle.h */,
 				CD6D1F511CEE489000F58CE7 /* NYTNewsArticle.m */,
+				CD6D1F651CEFB0CC00F58CE7 /* NYTNewsFeed.h */,
+				CD6D1F661CEFB0CC00F58CE7 /* NYTNewsFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -204,13 +202,17 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		CD6D1F641CEE89AE00F58CE7 /* CacheClient */ = {
+		CD6D1F691CEFFACC00F58CE7 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				CD6D1F611CEE89A900F58CE7 /* NYTCacheManager.h */,
-				CD6D1F621CEE89A900F58CE7 /* NYTCacheManager.m */,
+				CD6D1F731CEFFB9000F58CE7 /* NYTCacheManager.h */,
+				CD6D1F741CEFFB9000F58CE7 /* NYTCacheManager.m */,
+				CD6D1F751CEFFB9000F58CE7 /* NYTContentManager.h */,
+				CD6D1F761CEFFB9000F58CE7 /* NYTContentManager.m */,
+				CD6D1F771CEFFB9000F58CE7 /* NYTNewsAPIClient.h */,
+				CD6D1F781CEFFB9000F58CE7 /* NYTNewsAPIClient.m */,
 			);
-			name = CacheClient;
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,12 +349,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6D1F521CEE489000F58CE7 /* NYTNewsArticle.m in Sources */,
-				CD6D1F551CEE48BA00F58CE7 /* NYTNewsAPIClient.m in Sources */,
 				CD6D1F181CEE363D00F58CE7 /* AppDelegate.m in Sources */,
 				CD6D1F5B1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m in Sources */,
+				CD6D1F7A1CEFFB9000F58CE7 /* NYTContentManager.m in Sources */,
 				CD6D1F5F1CEE55E900F58CE7 /* HomePageTableView.m in Sources */,
+				CD6D1F671CEFB0CC00F58CE7 /* NYTNewsFeed.m in Sources */,
+				CD6D1F7B1CEFFB9000F58CE7 /* NYTNewsAPIClient.m in Sources */,
 				CD6D1F151CEE363D00F58CE7 /* main.m in Sources */,
-				CD6D1F631CEE89A900F58CE7 /* NYTCacheManager.m in Sources */,
+				CD6D1F791CEFFB9000F58CE7 /* NYTCacheManager.m in Sources */,
 				CD6D1F581CEE48D400F58CE7 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

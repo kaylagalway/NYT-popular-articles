@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 #import "NYTNewsAPIClient.h"
+#import "NYTNewsFeed.h"
+#import "NYTNewsArticle.h"
+#import "NYTCacheManager.h"
+#import "NYTContentManager.h"
 
 @interface ViewController ()
 
@@ -18,9 +22,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [NYTNewsAPIClient fetchWorldJSONWithCompletion:^(NSDictionary *worldJSON, NSError *error) {
-        NSLog(@"%@", worldJSON);
+    [NYTContentManager articlesForSection:Politics withCompletion:^(NSArray *articlesArray) {
+        NSLog(@"%@", articlesArray);
     }];
+    
+/*
+    [NYTNewsAPIClient fetchJSONForCategory: World withCompletion:^(NSDictionary *storiesDict, NSError *error) {
+        NSLog(@"%@", storiesDict);
+        NYTNewsFeed *currentFeed = [[NYTNewsFeed alloc]initWithJson:storiesDict];
+        NSLog(@"%@", currentFeed);
+        [NYTCacheManager cacheNewsFeed:currentFeed forCategory:World];
+        [NYTCacheManager fetchNewsFeedForCategory:World withCompletion:^(NYTNewsFeed *feed, ItemStatus status) {
+            NSLog(@"%@", feed);
+        }];
+        
+        
+        NYTNewsArticle *newArticle = [[NYTNewsArticle alloc]initWithDictionary:storiesDict[@"results"][0]];
+        
+        [NYTCacheManager cacheArticle:newArticle inCategory:World];
+        [NYTCacheManager fetchCachedArticle:newArticle inCategory:World withCompletion:^(NYTNewsArticle *article, ItemStatus status) {
+        }];
+    }];
+*/
+    
+
     
     // Do any additional setup after loading the view, typically from a nib.
 }
