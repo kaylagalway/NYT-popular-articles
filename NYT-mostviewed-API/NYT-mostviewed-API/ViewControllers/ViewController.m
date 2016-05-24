@@ -22,9 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [NYTContentManager articlesForSection:Politics withCompletion:^(NSArray *articlesArray) {
+    [NYTContentManager articlesForSection:Sports withCompletion:^(NSArray *articlesArray) {
         NSLog(@"%@", articlesArray);
     }];
+
     
 /*
     [NYTNewsAPIClient fetchJSONForCategory: World withCompletion:^(NSDictionary *storiesDict, NSError *error) {

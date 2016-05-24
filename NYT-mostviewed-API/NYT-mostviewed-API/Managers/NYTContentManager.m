@@ -10,27 +10,36 @@
 
 @implementation NYTContentManager
 
++ (void)addCachedNewsFeed:(NSDictionary *)newsFeedJson toArray:(NSMutableArray *)newsFeedArray {
+    NSDictionary *articlesFeed = newsFeedJson;
+    for (NSDictionary *articleDict in articlesFeed) {
+        [newsFeedArray addObject:articleDict];
+    }
+}
+
++ (void)addNewsFeedfromCategory:(NewsCategory)newsCategory toArray:(NSMutableArray *)newsFeedArray withDictionary:storiesJson {
+    NSDictionary *arcticlesFeed = storiesJson[NYTNewsFeedConstants_JSONResponseKey_results];
+    [NYTCacheManager cacheNewsFeed:[[NYTNewsFeed alloc]initWithJson:storiesJson] forCategory:newsCategory];
+    for (NSDictionary *articleDict in arcticlesFeed) {
+        [newsFeedArray addObject:articleDict];
+    }
+}
+
+
 + (void)articlesForSection:(NewsCategory)category withCompletion:(void(^)(NSArray *articlesArray))completion {
     NSMutableArray *articles = [@[]mutableCopy];
     [NYTCacheManager fetchNewsFeedForCategory:category withCompletion:^(NYTNewsFeed *feed, ItemStatus status) {
         switch (status) {
             case Valid:
             {
-                NSDictionary *articlesFeed = feed.feedJson[NYTNewsFeedConstants_JSONResponseKey_results];
-                for (NSDictionary *articleDict in articlesFeed) {
-                    [articles addObject:articleDict];
-                }
+                [self addCachedNewsFeed:feed.feedJson[NYTNewsFeedConstants_JSONResponseKey_results] toArray:articles];
                 completion(articles);
             }
                 break;
             case NotFound:
             {
                 [NYTNewsAPIClient fetchJSONForCategory:category withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-                    NSDictionary *arcticlesFeed = storiesDict[NYTNewsFeedConstants_JSONResponseKey_results];
-                    [NYTCacheManager cacheNewsFeed:[[NYTNewsFeed alloc]initWithJson:storiesDict] forCategory:category];
-                    for (NSDictionary *articleDict in arcticlesFeed) {
-                        [articles addObject:articleDict];
-                    }
+                    [self addNewsFeedfromCategory:category toArray:articles withDictionary:storiesDict];
                     completion(articles);
                 }];
             }
@@ -39,20 +48,10 @@
             {
                 [NYTNewsAPIClient fetchJSONForCategory:category withCompletion:^(NSDictionary *storiesDict, NSError *error) {
                     if (storiesDict == nil) {
-                        NSDictionary *articlesFeed = feed.feedJson[NYTNewsFeedConstants_JSONResponseKey_results];
-                        for (NSDictionary *articleDict in articlesFeed) {
-                            [articles addObject:articleDict];
-                        }
+                        [self addCachedNewsFeed:feed.feedJson[NYTNewsFeedConstants_JSONResponseKey_results] toArray:articles];
                         completion(articles);
                     } else {
-                        [NYTNewsAPIClient fetchJSONForCategory:category withCompletion:^(NSDictionary *storiesDict, NSError *error) {
-                            [NYTCacheManager cacheNewsFeed:feed forCategory:category];
-                            NSDictionary *arcticlesFeed = storiesDict[NYTNewsFeedConstants_JSONResponseKey_results];
-                            for (NSDictionary *articleDict in arcticlesFeed) {
-                                [articles addObject:articleDict];
-                            }
-                            completion(articles);
-                        }];
+                        [self addNewsFeedfromCategory:category toArray:articles withDictionary:storiesDict];
                     }
                 }];
             }
@@ -62,5 +61,26 @@
         }
     }];
 }
+
+- (void)fetchImageForStory:(NYTNewsArticle *)article withCompletion:(void(^)(void))completion {
+    if (article.largeImage == nil) {
+        NSURL *largeImageURL = [article largestAvailableImageURL];
+        [NYTNewsAPIClient downloadImagesForURL:largeImageURL withCompletion:^(UIImage *articleLargeImage, NSError *error) {
+            if (!error) {
+                article.largeImage = articleLargeImage;
+            } else {
+                return;
+            }
+        }];
+    }
+}
+
+- (void)fullStoryImageFromStub:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(NYTNewsArticle *article))completion {
+    [self fetchImageForStory:article withCompletion:^{
+        [NYTCacheManager cacheArticle:article inCategory:category];
+    }];
+}
+
+
 
 @end

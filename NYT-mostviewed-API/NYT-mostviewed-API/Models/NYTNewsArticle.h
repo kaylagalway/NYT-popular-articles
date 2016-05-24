@@ -23,6 +23,7 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (NSURL *)largestAvailableImageURL;
+- (NSURL *)availableThumbnailURL;
 
 
 @end

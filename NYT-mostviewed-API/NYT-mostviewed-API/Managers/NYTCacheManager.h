@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NYTNewsArticle.h"
 #import "NYTNewsFeed.h"
+#import "NYTNewsAPIClient.h"
 
 typedef NS_ENUM(NSUInteger, ItemStatus) {
     Valid,

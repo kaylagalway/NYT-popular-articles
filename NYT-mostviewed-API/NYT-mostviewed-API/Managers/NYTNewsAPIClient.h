@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "NYTNewsFeed.h"
+#import "NYTNewsArticle.h"
 
 @interface NYTNewsAPIClient : NSObject
 
+
 + (void)fetchJSONForCategory:(NewsCategory) category withCompletion:(void(^)(NSDictionary *storiesDict, NSError *error)) completion;
++ (void)downloadImagesForURL:(NSURL *)largeImageURL withCompletion:(void(^)(UIImage *articleLargeImage, NSError *error))completion;
+
 
 @end
