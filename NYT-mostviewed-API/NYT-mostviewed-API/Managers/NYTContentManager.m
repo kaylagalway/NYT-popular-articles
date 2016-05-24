@@ -62,7 +62,7 @@
     }];
 }
 
-- (void)fetchImageForStory:(NYTNewsArticle *)article withCompletion:(void(^)(void))completion {
++ (void)fetchImageForStory:(NYTNewsArticle *)article withCompletion:(void(^)(void))completion {
     if (article.largeImage == nil) {
         NSURL *largeImageURL = [article largestAvailableImageURL];
         [NYTNewsAPIClient downloadImagesForURL:largeImageURL withCompletion:^(UIImage *articleLargeImage, NSError *error) {
@@ -75,7 +75,7 @@
     }
 }
 
-- (void)fullStoryImageFromStub:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(NYTNewsArticle *article))completion {
++ (void)fullStoryImageFromStub:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(NYTNewsArticle *article))completion {
     [self fetchImageForStory:article withCompletion:^{
         [NYTCacheManager cacheArticle:article inCategory:category];
     }];

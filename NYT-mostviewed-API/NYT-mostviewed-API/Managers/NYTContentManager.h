@@ -21,4 +21,6 @@
 
 + (void)articlesForSection:(NewsCategory)category withCompletion:(void(^)(NSArray *articlesArray))completion;
 
++ (void)fullStoryImageFromStub:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(NYTNewsArticle *article))completion;
+
 @end

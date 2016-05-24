@@ -24,6 +24,10 @@
     
     [NYTContentManager articlesForSection:Sports withCompletion:^(NSArray *articlesArray) {
         NSLog(@"%@", articlesArray);
+        NYTNewsArticle *firstArticle = articlesArray[0];
+        [NYTContentManager fullStoryImageFromStub:firstArticle inCategory:Sports withCompletion:^(NYTNewsArticle *article) {
+            NSLog(@"%@", firstArticle.largeImage);
+        }];
     }];
 
     
