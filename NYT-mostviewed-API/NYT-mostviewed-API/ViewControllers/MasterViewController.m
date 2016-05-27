@@ -6,32 +6,33 @@
 //  Copyright © 2016 edu.self. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MasterViewController.h"
 #import "NYTNewsAPIClient.h"
 #import "NYTNewsFeed.h"
 #import "NYTNewsArticle.h"
 #import "NYTCacheManager.h"
 #import "NYTContentManager.h"
 
-@interface ViewController ()
+@interface MasterViewController () <UITableViewDelegate, UITableViewDataSource, UITabBarDelegate>
+
 
 @end
 
-@implementation ViewController
+@implementation MasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+/*
     [NYTContentManager articlesForSection:Sports withCompletion:^(NSArray *articlesArray) {
         NSLog(@"%@", articlesArray);
-        NYTNewsArticle *firstArticle = articlesArray[0];
+        NYTNewsArticle *firstArticle = [[NYTNewsArticle alloc]initWithDictionary: articlesArray[0]];
         [NYTContentManager fullStoryImageFromStub:firstArticle inCategory:Sports withCompletion:^(NYTNewsArticle *article) {
             NSLog(@"%@", firstArticle.largeImage);
         }];
     }];
 
     
-/*
+
     [NYTNewsAPIClient fetchJSONForCategory: World withCompletion:^(NSDictionary *storiesDict, NSError *error) {
         NSLog(@"%@", storiesDict);
         NYTNewsFeed *currentFeed = [[NYTNewsFeed alloc]initWithJson:storiesDict];

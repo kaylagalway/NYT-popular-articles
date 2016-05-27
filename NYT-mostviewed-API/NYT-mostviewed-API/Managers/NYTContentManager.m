@@ -62,12 +62,12 @@
     }];
 }
 
-+ (void)fetchImageForStory:(NYTNewsArticle *)article withCompletion:(void(^)(void))completion {
++ (void)fetchImageForStory:(NYTNewsArticle *)article withCompletion:(void(^)(UIImage *articleImage))completion {
     if (article.largeImage == nil) {
         NSURL *largeImageURL = [article largestAvailableImageURL];
         [NYTNewsAPIClient downloadImagesForURL:largeImageURL withCompletion:^(UIImage *articleLargeImage, NSError *error) {
             if (!error) {
-                article.largeImage = articleLargeImage;
+                completion(articleLargeImage);
             } else {
                 return;
             }
@@ -75,10 +75,21 @@
     }
 }
 
-+ (void)fullStoryImageFromStub:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(NYTNewsArticle *article))completion {
-    [self fetchImageForStory:article withCompletion:^{
++ (void)fullStoryItemFromStub:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(NYTNewsArticle *article))completion {
+    [self fetchImageForStory:article withCompletion:^(UIImage *articleImage) {
+        article.largeImage = articleImage;
         [NYTCacheManager cacheArticle:article inCategory:category];
     }];
+}
+
++ (void)imageForArticle:(NYTNewsArticle *)article inCategory:(NewsCategory)category withCompletion:(void(^)(UIImage *largeImage))completion {
+    if (article.largeImage) {
+        completion(article.largeImage);
+    } else {
+        [self fullStoryItemFromStub:article inCategory:category withCompletion:^(NYTNewsArticle *article) {
+            completion(article.largeImage);
+        }];
+    }
 }
 
 

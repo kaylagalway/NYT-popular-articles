@@ -15,13 +15,14 @@
 		CD6D1F2E1CEE363D00F58CE7 /* NYT_mostviewed_APITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F2D1CEE363D00F58CE7 /* NYT_mostviewed_APITests.m */; };
 		CD6D1F391CEE363D00F58CE7 /* NYT_mostviewed_APIUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F381CEE363D00F58CE7 /* NYT_mostviewed_APIUITests.m */; };
 		CD6D1F521CEE489000F58CE7 /* NYTNewsArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F511CEE489000F58CE7 /* NYTNewsArticle.m */; };
-		CD6D1F581CEE48D400F58CE7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F571CEE48D400F58CE7 /* ViewController.m */; };
-		CD6D1F5B1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F5A1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m */; };
+		CD6D1F581CEE48D400F58CE7 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F571CEE48D400F58CE7 /* MasterViewController.m */; };
+		CD6D1F5B1CEE51D000F58CE7 /* NYTNewsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F5A1CEE51D000F58CE7 /* NYTNewsDataSource.m */; };
 		CD6D1F5F1CEE55E900F58CE7 /* HomePageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F5E1CEE55E900F58CE7 /* HomePageTableView.m */; };
 		CD6D1F671CEFB0CC00F58CE7 /* NYTNewsFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F661CEFB0CC00F58CE7 /* NYTNewsFeed.m */; };
 		CD6D1F791CEFFB9000F58CE7 /* NYTCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F741CEFFB9000F58CE7 /* NYTCacheManager.m */; };
 		CD6D1F7A1CEFFB9000F58CE7 /* NYTContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F761CEFFB9000F58CE7 /* NYTContentManager.m */; };
 		CD6D1F7B1CEFFB9000F58CE7 /* NYTNewsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F781CEFFB9000F58CE7 /* NYTNewsAPIClient.m */; };
+		CD6D1F7E1CF79E3F00F58CE7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D1F7D1CF79E3F00F58CE7 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,10 +59,10 @@
 		CD6D1F3A1CEE363D00F58CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6D1F501CEE488F00F58CE7 /* NYTNewsArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsArticle.h; path = Models/NYTNewsArticle.h; sourceTree = "<group>"; };
 		CD6D1F511CEE489000F58CE7 /* NYTNewsArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsArticle.m; path = Models/NYTNewsArticle.m; sourceTree = "<group>"; };
-		CD6D1F561CEE48D400F58CE7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ViewController.h; sourceTree = "<group>"; };
-		CD6D1F571CEE48D400F58CE7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ViewController.m; sourceTree = "<group>"; };
-		CD6D1F591CEE51D000F58CE7 /* NYTNewsTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsTableViewDataSource.h; path = DataSources/NYTNewsTableViewDataSource.h; sourceTree = "<group>"; };
-		CD6D1F5A1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsTableViewDataSource.m; path = DataSources/NYTNewsTableViewDataSource.m; sourceTree = "<group>"; };
+		CD6D1F561CEE48D400F58CE7 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ViewControllers/MasterViewController.h; sourceTree = "<group>"; };
+		CD6D1F571CEE48D400F58CE7 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ViewControllers/MasterViewController.m; sourceTree = "<group>"; };
+		CD6D1F591CEE51D000F58CE7 /* NYTNewsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsDataSource.h; path = DataSources/NYTNewsDataSource.h; sourceTree = "<group>"; };
+		CD6D1F5A1CEE51D000F58CE7 /* NYTNewsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsDataSource.m; path = DataSources/NYTNewsDataSource.m; sourceTree = "<group>"; };
 		CD6D1F5D1CEE55E900F58CE7 /* HomePageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageTableView.h; path = Views/HomePageTableView.h; sourceTree = "<group>"; };
 		CD6D1F5E1CEE55E900F58CE7 /* HomePageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomePageTableView.m; path = Views/HomePageTableView.m; sourceTree = "<group>"; };
 		CD6D1F651CEFB0CC00F58CE7 /* NYTNewsFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsFeed.h; path = Models/NYTNewsFeed.h; sourceTree = "<group>"; };
@@ -72,6 +73,8 @@
 		CD6D1F761CEFFB9000F58CE7 /* NYTContentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTContentManager.m; path = Managers/NYTContentManager.m; sourceTree = "<group>"; };
 		CD6D1F771CEFFB9000F58CE7 /* NYTNewsAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYTNewsAPIClient.h; path = Managers/NYTNewsAPIClient.h; sourceTree = "<group>"; };
 		CD6D1F781CEFFB9000F58CE7 /* NYTNewsAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NYTNewsAPIClient.m; path = Managers/NYTNewsAPIClient.m; sourceTree = "<group>"; };
+		CD6D1F7C1CF79E3F00F58CE7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = ViewControllers/DetailViewController.h; sourceTree = "<group>"; };
+		CD6D1F7D1CF79E3F00F58CE7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = ViewControllers/DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,8 +170,10 @@
 		CD6D1F4A1CEE371000F58CE7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD6D1F561CEE48D400F58CE7 /* ViewController.h */,
-				CD6D1F571CEE48D400F58CE7 /* ViewController.m */,
+				CD6D1F561CEE48D400F58CE7 /* MasterViewController.h */,
+				CD6D1F571CEE48D400F58CE7 /* MasterViewController.m */,
+				CD6D1F7C1CF79E3F00F58CE7 /* DetailViewController.h */,
+				CD6D1F7D1CF79E3F00F58CE7 /* DetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -176,8 +181,8 @@
 		CD6D1F4B1CEE371800F58CE7 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				CD6D1F591CEE51D000F58CE7 /* NYTNewsTableViewDataSource.h */,
-				CD6D1F5A1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m */,
+				CD6D1F591CEE51D000F58CE7 /* NYTNewsDataSource.h */,
+				CD6D1F5A1CEE51D000F58CE7 /* NYTNewsDataSource.m */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
@@ -350,14 +355,15 @@
 			files = (
 				CD6D1F521CEE489000F58CE7 /* NYTNewsArticle.m in Sources */,
 				CD6D1F181CEE363D00F58CE7 /* AppDelegate.m in Sources */,
-				CD6D1F5B1CEE51D000F58CE7 /* NYTNewsTableViewDataSource.m in Sources */,
+				CD6D1F5B1CEE51D000F58CE7 /* NYTNewsDataSource.m in Sources */,
 				CD6D1F7A1CEFFB9000F58CE7 /* NYTContentManager.m in Sources */,
 				CD6D1F5F1CEE55E900F58CE7 /* HomePageTableView.m in Sources */,
 				CD6D1F671CEFB0CC00F58CE7 /* NYTNewsFeed.m in Sources */,
 				CD6D1F7B1CEFFB9000F58CE7 /* NYTNewsAPIClient.m in Sources */,
+				CD6D1F7E1CF79E3F00F58CE7 /* DetailViewController.m in Sources */,
 				CD6D1F151CEE363D00F58CE7 /* main.m in Sources */,
 				CD6D1F791CEFFB9000F58CE7 /* NYTCacheManager.m in Sources */,
-				CD6D1F581CEE48D400F58CE7 /* ViewController.m in Sources */,
+				CD6D1F581CEE48D400F58CE7 /* MasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

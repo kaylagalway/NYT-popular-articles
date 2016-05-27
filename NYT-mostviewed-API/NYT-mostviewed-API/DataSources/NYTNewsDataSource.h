@@ -1,13 +1,13 @@
 //
-//  NYTNewsTableViewDataSource.m
+//  NYTNewsTableViewDataSource.h
 //  NYT-mostviewed-API
 //
 //  Created by Kayla Galway on 5/19/16.
 //  Copyright © 2016 edu.self. All rights reserved.
 //
 
-#import "NYTNewsTableViewDataSource.h"
+#import <Foundation/Foundation.h>
 
-@implementation NYTNewsTableViewDataSource
+@interface NYTNewsDataSource : NSObject
 
 @end
