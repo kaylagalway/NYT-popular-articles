@@ -25,7 +25,6 @@
     }
 }
 
-
 + (void)articlesForSection:(NewsCategory)category withCompletion:(void(^)(NSArray *articlesArray))completion {
     NSMutableArray *articles = [@[]mutableCopy];
     [NYTCacheManager fetchNewsFeedForCategory:category withCompletion:^(NYTNewsFeed *feed, ItemStatus status) {
@@ -62,6 +61,43 @@
     }];
 }
 
+
+//+ (void)articlesForSection:(NewsCategory)category withCompletion:(void(^)(NSArray *articlesArray))completion {
+//    NSMutableArray *articles = [@[]mutableCopy];
+//    [NYTCacheManager fetchNewsFeedForCategory:category withCompletion:^(NYTNewsFeed *feed, ItemStatus status) {
+//        switch (status) {
+//            case Valid:
+//            {
+//                [self addCachedNewsFeed:feed.feedJson[NYTNewsFeedConstants_JSONResponseKey_results] toArray:articles];
+//                completion(articles);
+//            }
+//                break;
+//            case NotFound:
+//            {
+//                [NYTNewsAPIClient fetchJSONForCategory:category withCompletion:^(NSDictionary *storiesDict, NSError *error) {
+//                    [self addNewsFeedfromCategory:category toArray:articles withDictionary:storiesDict];
+//                    completion(articles);
+//                }];
+//            }
+//                break;
+//            case Expired:
+//            {
+//                [NYTNewsAPIClient fetchJSONForCategory:category withCompletion:^(NSDictionary *storiesDict, NSError *error) {
+//                    if (storiesDict == nil) {
+//                        [self addCachedNewsFeed:feed.feedJson[NYTNewsFeedConstants_JSONResponseKey_results] toArray:articles];
+//                        completion(articles);
+//                    } else {
+//                        [self addNewsFeedfromCategory:category toArray:articles withDictionary:storiesDict];
+//                    }
+//                }];
+//            }
+//                break;
+//            default:
+//                break;
+//        }
+//    }];
+//}
+
 + (void)fetchImageForStory:(NYTNewsArticle *)article withCompletion:(void(^)(UIImage *articleImage))completion {
     if (article.largeImage == nil) {
         NSURL *largeImageURL = [article largestAvailableImageURL];
@@ -92,6 +128,21 @@
     }
 }
 
+/*-(void)reloadData
+ {
+ __weak typeof(self) weakSelf = self;
+ [GGSquarespaceAPIClient fetchNewsStoryDictionariesWithCompletion:^(NSArray *stories) {
+ __strong typeof(weakSelf) strongSelf = weakSelf;
+ NSMutableArray *articles = [@[] mutableCopy];
+ for (NSDictionary *newsDict in stories) {
+ [articles addObject: [[GGNewsArticle alloc]initWithDictionary: newsDict]];
+ }
+ strongSelf.newsStoriesArray = articles;
+ if (strongSelf.delegate && [strongSelf.delegate respondsToSelector:@selector(dataSourceDidLoad)]) {
+ [strongSelf.delegate dataSourceDidLoad];
+ }
+ }];
+ }*/
 
 
 @end

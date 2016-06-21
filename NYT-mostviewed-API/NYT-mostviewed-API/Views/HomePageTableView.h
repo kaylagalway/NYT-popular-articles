@@ -7,7 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NYTContentManager.h"
+#import "NYTNewsAPIClient.h"
+#import "NYTNewsFeed.h"
+#import "NYTNewsArticle.h"
 
-@interface HomePageTableView : UITableView
+@class HomePageTableView;
+
+@protocol HomePageTableViewDelegate <NSObject>
+
+@optional
+
+-(void)tableViewDidLoad;
 
 @end
+
+@interface HomePageTableView : UITableView;
+
+@property (weak, nonatomic) id<HomePageTableViewDelegate> delegate;
+
+-(NSInteger)numberOfRows;
+-(UITableViewCell *)cellForArticleAtIndex:(NSIndexPath *)indexPath;
+-(void)reloadData;
+
+@end
+
